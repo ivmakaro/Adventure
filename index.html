@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mood Pulse Log</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="page-header">
+        <div class="header-text">
+          <h1>Mood Pulse</h1>
+          <p class="tagline">
+            Tap a feeling to capture the moment. Keep tapping the same feeling to
+            build its intensity.
+          </p>
+        </div>
+        <button id="clear-log" class="ghost-button" type="button">
+          Clear log
+        </button>
+      </header>
+
+      <section class="panel">
+        <h2 class="panel-title">How are you feeling?</h2>
+        <div class="button-grid" role="group" aria-label="Mood options">
+          <button class="mood-button" data-mood="Happy" type="button">
+            😊 Happy
+          </button>
+          <button class="mood-button" data-mood="Sad" type="button">
+            😢 Sad
+          </button>
+          <button class="mood-button" data-mood="Angry" type="button">
+            😠 Angry
+          </button>
+          <button class="mood-button" data-mood="Inspired" type="button">
+            ✨ Inspired
+          </button>
+          <button class="mood-button" data-mood="Anxious" type="button">
+            😰 Anxious
+          </button>
+          <button class="mood-button" data-mood="Calm" type="button">
+            😌 Calm
+          </button>
+        </div>
+        <p class="tip">
+          The first tap records the date and time. Each additional tap adds one
+          more step of intensity (1 whisper → 20+ overwhelming).
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2 class="panel-title">Log</h2>
+          <div id="active-session" class="active-session" aria-live="polite"></div>
+        </div>
+        <div id="log-empty" class="empty-log" hidden>
+          <p>No entries yet. Your history will appear here.</p>
+        </div>
+        <ol id="log-list" class="log-list" aria-live="polite"></ol>
+      </section>
+    </main>
+
+    <template id="log-item-template">
+      <li class="log-item">
+        <div class="log-heading">
+          <span class="log-mood"></span>
+          <span class="log-intensity"></span>
+        </div>
+        <time class="log-time" datetime=""></time>
+      </li>
+    </template>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
